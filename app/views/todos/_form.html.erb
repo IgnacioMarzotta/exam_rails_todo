@@ -1,0 +1,14 @@
+<%= form_with(model: @todo, local: true) do |f| %>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Description</label>
+        <br>
+        <%= f.text_field :description%>
+        <small id="emailHelp" class="form-text text-muted">* Can't be empty</small>
+    </div>
+    <div class="form-group form-check">
+        <%= f.label :completed %>
+        <%= f.check_box :completed %>
+    </div>
+    <%= link_to '<< BACK', todos_path, class: "btn btn-primary" %>
+    <%= f.submit :DONE, class: "btn btn-primary"%>
+<% end %>

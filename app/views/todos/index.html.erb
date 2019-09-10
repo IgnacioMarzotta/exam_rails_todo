@@ -1,0 +1,7 @@
+<% @todos.each do |todo|%>
+    <br>
+    <%= todo.description%>
+    <%= todo.completed%>
+<% end %>
+<br>
+<%= link_to 'New ToDo', todos_new_path %>
