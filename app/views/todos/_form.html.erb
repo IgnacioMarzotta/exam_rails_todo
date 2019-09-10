@@ -2,8 +2,9 @@
     <div class="form-group">
         <label for="exampleInputEmail1">Description</label>
         <br>
-        <%= f.text_field :description%>
+        <%= f.text_area :description%>
         <small id="emailHelp" class="form-text text-muted">* Can't be empty</small>
+        <small id="emailHelp" class="form-text text-muted">* If empty, the ToDo won't be saved</small>
     </div>
     <div class="form-group form-check">
         <%= f.label :completed %>

@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-    before_action :find_todo, only: [:show]
+    before_action :find_todo, only: [:show, :edit, :destroy]
 
     def index
         @todos = Todo.all
@@ -16,6 +16,19 @@ class TodosController < ApplicationController
     end
 
     def show; end
+
+    def edit; end
+
+    def destroy
+        @todo.destroy
+        redirect_to todos_path
+    end
+
+    def update
+        @todo = Todo.find(params[:id])
+        @todo.update(todo_params)
+        redirect_to todos_path
+    end
 
     def find_todo
         @todo = Todo.find(params[:id])
