@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row listed-title rounded-bottom">
+        <div class="col-sm-6">
+            Unfinished
+        </div>
+        <div class="col-sm-6">
+            Completed
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            <% @unfinished_todos.each_slice(2) do |two_unfinished| %>
+                <div class="card-deck">
+                    <% two_unfinished.each do |todo|%>
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <p class="card-text"><%= todo.description%></p>
+                                <h6 class="card-subtitle mb-2">
+                                    <% if(todo.completed == true)%>
+                                    <span class="badge badge-success">FINISHED!</span>
+                                    <% else %>
+                                    <span class="badge badge-danger">NOT COMPLETED!</span>
+                                    <% end%>
+                                </h6>
+                                <td> <%= link_to "Show | ", todo%></td>
+                                <td> <%= link_to "Edit | ", edit_todo_path(todo)%></td>
+                                <td> <%= link_to "Delete", todo, method: :delete, data: {confirm: 'Are you sure? You might forget what you had to do!'} %></td>
+                                <br>
+                                <small class="text-muted"><%= todo.updated_at%></small>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>    
+            <% end %>
+        </div>
+        <div class="col-sm-6">
+            <% @completed_todos.each_slice(2) do |two_completed| %>
+                <div class="card-deck">
+                    <% two_completed.each do |todo|%>
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <p class="card-text"><%= todo.description%></p>
+                                <h6 class="card-subtitle mb-2">
+                                    <% if(todo.completed == true)%>
+                                    <span class="badge badge-success">FINISHED!</span>
+                                    <% else %>
+                                    <span class="badge badge-danger">NOT COMPLETED!</span>
+                                    <% end%>
+                                </h6>
+                                <td> <%= link_to "Show | ", todo%></td>
+                                <td> <%= link_to "Edit | ", edit_todo_path(todo)%></td>
+                                <td> <%= link_to "Delete", todo, method: :delete, data: {confirm: 'Are you sure? You might forget what you had to do!'} %></td>
+                                <br>
+                                <small class="text-muted"><%= todo.updated_at%></small>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>    
+            <% end %>
+        </div>
+    </div>
+</div>
+

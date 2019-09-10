@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+
+.listed-title
+{
+    text-align: center;
+    font-size: 30px;
+    color: #ffffff;
+    background-color: #343A40;
+    margin-top: -2%;
+    margin-left: 0%;
+}
+
+.index-table
+{
+    margin-top: -2%;
+}
+
+.form-title
+{
+    padding-left: 38%;
+    padding-right: 37%;
+    padding-top: 5%;
+}
+
+.form-margin
+{
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 3%;
+}

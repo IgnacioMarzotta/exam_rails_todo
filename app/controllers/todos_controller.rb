@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-    before_action :find_todo, only: [:show, :edit, :destroy]
+    before_action :find_todo, only: [:show, :edit, :destroy, :complete]
 
     def index
         @todos = Todo.all
@@ -24,15 +24,28 @@ class TodosController < ApplicationController
         redirect_to todos_path
     end
 
+    def find_todo
+        @todo = Todo.find(params[:id])
+    end
+
+    def list
+        @unfinished_todos = Todo.where(completed: false)
+        @completed_todos = Todo.where(completed: true)
+    end
+
     def update
         @todo = Todo.find(params[:id])
         @todo.update(todo_params)
         redirect_to todos_path
     end
 
-    def find_todo
+    def complete
         @todo = Todo.find(params[:id])
+        @todo.completed = true
+        @todo.save
+        redirect_to todos_path
     end
+
 
     private
     def todo_params

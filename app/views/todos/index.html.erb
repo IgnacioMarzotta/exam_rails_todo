@@ -1,10 +1,30 @@
-<% @todos.each do |todo|%>
-    <br>
-    <%= todo.description%>
-    <%= todo.completed%>
-    <td> <%= link_to "Show", todo%></td>
-    <td> <%= link_to "Edit", edit_todo_path(todo)%></td>
-    <td> <%= link_to "Delete", todo, method: :delete, data: {confirm: 'Are you sure? You might forget what you had to do!'} %></td>
-<% end %>
-<br>
-<%= link_to 'New ToDo', todos_new_path %>
+<table class="table table-hover index-table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Completed?</th>
+      <th scope="col">Mark as Done</th>
+      <th scope="col">Show</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @todos.each do |todo|%>
+        <tr>
+            <td><%= todo.description %></td>
+            <td>
+                  <% if(todo.completed == true)%>
+                  <span class="badge badge-success">FINISHED!</span>
+                  <% else %>
+                  <span class="badge badge-danger">NOT COMPLETED!</span>
+                  <% end%>
+            </td>
+            <td> <%= link_to "Complete", complete_todo_path(todo) %></td>
+            <td> <%= link_to "Show", todo%></td>
+            <td> <%= link_to "Edit", edit_todo_path(todo)%></td>
+            <td> <%= link_to "Delete", todo, method: :delete, data: {confirm: 'Are you sure? You might forget what you had to do!'} %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
