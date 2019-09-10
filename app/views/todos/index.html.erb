@@ -2,6 +2,7 @@
     <br>
     <%= todo.description%>
     <%= todo.completed%>
+    <td> <%= link_to "Show", todo%></td>
 <% end %>
 <br>
 <%= link_to 'New ToDo', todos_new_path %>
